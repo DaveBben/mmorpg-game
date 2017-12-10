@@ -1,0 +1,25 @@
+{
+  "name": "mmorpg-game",
+  "version": "1.0.0",
+  "description": "A simple demo stration of a mmorpg game",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mmorpg",
+    "game",
+    "javascript"
+  ],
+  "author": "Dave Bennett",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^4.13.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}
