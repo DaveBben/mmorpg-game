@@ -3,6 +3,9 @@ const gameSettings = require('./gameSettings');
 const players = [];
 
 module.exports = {
+  /**
+   * Returns a random array with rgb values
+   */
   getRandomColor() {
     const color = [0, 0, 0];
     for (let i = 0; i < 3; i += 1) {
@@ -11,12 +14,20 @@ module.exports = {
     return color;
   },
 
+  /**
+   * Returns a random XY position
+   */
   getRandomPosition() {
     const x = Math.floor(Math.random() * (gameSettings.gameWidth - gameSettings.playerWidth)) + gameSettings.playerWidth;
     const y = Math.floor(Math.random() * (gameSettings.gameHeight - gameSettings.playerHeight)) + gameSettings.playerHeight;
     return [x, y];
   },
 
+  /**
+   * Adds a player to array if they don't aready exists.
+   * Initalizes the players values
+   * @param {*Socket id - string} id 
+   */
   addPlayer(id) {
     const xyCoordinates = this.getRandomPosition();
     const rgbArray = this.getRandomColor();
@@ -32,6 +43,11 @@ module.exports = {
     }
   },
 
+  /**
+   * Moves the player in the specified direction if valid
+   * @param {*String} id 
+   * @param {* number} direction 
+   */
   move(id, direction) {
     const player = this.getPlayerById(id);
     if (player) {
@@ -54,6 +70,10 @@ module.exports = {
     }
   },
 
+  /**
+   * Returns an object reference to the player
+   * @param {*String} id 
+   */
   getPlayerById(id) {
     let player;
     players.forEach(((element, index, array) => {
@@ -64,6 +84,10 @@ module.exports = {
     return player;
   },
 
+  /**
+   * Checks to see if the player already exists
+   * @param {*String} id 
+   */
   exisitingPlayer(id) {
     let existing = false;
     players.forEach(((element) => {
@@ -79,6 +103,10 @@ module.exports = {
     return players;
   },
 
+  /**
+   * Removes the specified player from the array
+   * @param {*String} id 
+   */
   removePlayer(id) {
     let index = -1;
     for (let i = 0; i < players.length; i++) {

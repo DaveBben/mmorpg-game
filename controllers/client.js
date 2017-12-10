@@ -2,11 +2,14 @@ const playerController = require('./player');
 const gameSettings = require('./gameSettings');
 
 module.exports = function (io) {
+  //Broadcasting all players movement at defined intervals
   setInterval(() => {
     io.sockets.emit('gamedata', playerController.getAllplayers()); 
-  }, gameSettings.fps);
+  }, gameSettings.fps); 
+
   io.on('connection', (socket) => {
     console.log(`New connection ${socket.id}`);
+    //on new connection, return canvas settings and id
     socket.emit(
       'create',
       {

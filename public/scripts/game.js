@@ -36,23 +36,24 @@ function move(direction) {
 window.onkeydown = function (event) {
   const keyPr = event.keyCode; // Key code of key pressed
   if (keyPr === 68) {
-    move(0);
+    move(0); //right
   } else if (keyPr === 65) {
-    move(180);
+    move(180); //left
   } else if (keyPr === 87) {
-    move(90);
+    move(90); //up
   } else if (keyPr === 83) {
-    move(270);
+    move(270); //down
   }
 };
 
-
+//gets called on successful connect
 socket.on('create', (data) => {
   canvas.width = data.canvasWidth;
   canvas.height = data.canvasHeight;
   myPlayer.id = data.id;
 });
 
+//gets called very often.
 socket.on('gamedata', (data) => {
   console.log(data);
   otherPlayers = [];
